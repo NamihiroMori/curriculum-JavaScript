@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    th,
+    td {
+      padding: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <select id="select_root" onchange="changeLang()">
+    <option id="select">選択してください</option>
+    <option id="selected_jpn">日本語</option>
+    <option id="selected_en">English</option>
+    <option id="selected_all">全て表示</option>
+  </select>
+  <table>
+    <tr id="japanese_list">
+      <th>日本</th>
+      <td>こんにちは</td>
+      <td>ありがとう</td>
+      <td>さようなら</td>
+    </tr>
+    <tr id="english_list">
+      <th>English</th>
+      <td>Hello</td>
+      <td>Thank you</td>
+      <td>Good Bye</td>
+    </tr>
+  </table>
+
+  <script>
+    //①onchangeで使用されている関数の中身を実装してください。
+    function changeLang() {
+      // プルダウンで選択された値を取得
+      let lang = document.getElementById('select_root').value;
+
+      // lang値に応じて、hiddenクラス追加で非表示状態に、削除で表示状態にする
+      switch (lang) {
+        case '日本語':
+          // 日本語リストを表示、英語リストを非表示
+          document.getElementById('japanese_list').classList.remove('hidden');
+          document.getElementById('english_list').classList.add('hidden');
+          break;
+        case 'English':
+          // 日本語リストを非表示、英語リストを表示
+          document.getElementById('japanese_list').classList.add('hidden');
+          document.getElementById('english_list').classList.remove('hidden');
+          break;
+        default:
+          // 全リストを表示
+          document.getElementById('english_list').classList.remove('hidden');
+          document.getElementById('japanese_list').classList.remove('hidden');
+          break;
+      }
+
+
+    }
+  </script>
+</body>
+
+</html>
