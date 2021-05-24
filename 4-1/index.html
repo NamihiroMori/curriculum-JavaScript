@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="app">
+        <p>残タスク数：{{remaining}}/{{list.length}}</p>
         <input type="text" v-model="addText" placeholder="ToDoを入力して">
         <button v-on:click="addToDo()">追加</button>
         <button v-on:click="deleteBtn()">削除</button><hr>

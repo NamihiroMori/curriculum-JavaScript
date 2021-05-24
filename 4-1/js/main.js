@@ -33,5 +33,13 @@ var app = new Vue({
               return !todo.isChecked;
           });
       }
+  },
+  computed: {
+      remaining: function () {
+          var tasks = this.list.filter(function (todo) {
+              return !todo.isChecked;
+          });
+          return tasks.length;
+      }
   }
 });
