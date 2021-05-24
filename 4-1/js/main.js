@@ -3,6 +3,7 @@ var app = new Vue({
   data: {
       list: [],
       addText: '',
+      pattern: ''
   },
   //watchでlistの変更を監視
   watch: {
@@ -36,10 +37,15 @@ var app = new Vue({
   },
   computed: {
       remaining: function () {
-          var tasks = this.list.filter(function (todo) {
+          var tasks = this.list.filter(function(todo) {
               return !todo.isChecked;
           });
           return tasks.length;
+      },
+      matchedList: function() {
+          return this.list.filter(function(todo) {
+              return todo.text.indexOf(this) > -1;
+          }, this.pattern);
       }
   }
 });
